@@ -1,6 +1,6 @@
-function [] = plot_line_samples(x, n, mean, cov, colour)
+function [] = plot_line_samples(x, phi_xs, n, mean, cov, colour)
 w = gaussian_random_samples(n, mean, cov);
-X = [x, ones([length(x), 1])];
+X = [phi_xs, ones([size(x, 1), 1])];
 for i=1:n
    y = X*w(:, i);
    plot(x, y,'color', colour);
