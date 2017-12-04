@@ -7,7 +7,7 @@ n = length(y);
 d = size(w_0, 1);
 phi = [X, ones([size(X,1), 1])];
 
-V_0 = diag(var_w)*eye(d);
+V_0 = var_w*eye(d);
 Inv = var_y*eye(d)/V_0;
 V_n = var_y*eye(d)/(Inv + phi'*phi);
 

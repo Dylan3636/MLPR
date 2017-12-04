@@ -1,0 +1,34 @@
+n = 10;
+n_w= 5;
+
+var_0 = 4;
+l=0.1;
+var_y = 0;
+
+X = [linspace(-1, 1, n)];
+X = X(:);
+y =  2*X.^5 + 1*rand([n, 1]);
+
+
+xs = linspace(-5, 5, 1000);
+xs = xs(:);
+ys = 2*xs.^5 + 0*rand([length(xs), 1]);
+
+X_prime = xs;
+kernel = rbf_kernel(var_0, l);
+K = kernel(X, X);
+K_prime_L = kernel(X_prime, X);
+K_prime_R = kernel(X, X_prime);
+K_prime_prime = kernel(X_prime, X_prime);
+[mu, cv] = calculate_gp_parameters(y, var_y, K, K_prime_L, K_prime_R, K_prime_prime);
+
+plot_gp_samples(xs,n_w, mu, cv, [0,0,0]);
+hold on;
+scatter(X(:,1), y, 'rx');
+[]calculate_gp_e()
+[upper_ys, lower_ys] = calculate_gp_confidence_interval(0.45, mu, cv);
+plot(xs,mu,'yellow')
+plot(xs, upper_ys)
+plot(xs, lower_ys)
+legend({'upper bound', 'lower bound'})
+hold off;

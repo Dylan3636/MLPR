@@ -1,6 +1,6 @@
 function new_x = gaussian_transform(x, mu, sigma)
-n = length(mu);
-mu = reshape(mu, [n, 1]);
+%n = length(mu);
+%mu = reshape(mu, [n, 1]);
 [U, S] = svd(sigma);
 A = U*sqrt(S);
 rot_x = A*x;

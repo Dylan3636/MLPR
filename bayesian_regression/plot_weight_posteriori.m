@@ -1,4 +1,4 @@
-function [] = plot_weight_posteriori(xs, phi_xs, w_0, var_w, w_N, V_n, n_w)
+function [] = plot_weight_posteriori(xs, phi_xs, w_N, V_n, n_w)
 
 plot_line_samples(xs, phi_xs, n_w, w_N, V_n, [0,0,0]);
 hold on;
